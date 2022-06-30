@@ -1,0 +1,22 @@
+html {
+    /* We use it to prevent padding adding extra height or width over the maximum height and width of the page */
+    box-sizing: border-box;
+}
+
+body {
+    /* We set up margin at the value of 0 in all four sides (top, bottom, left, right) */
+    margin: 0;
+    /* We stretch the website to its maximum height (100vh) regardless of how much space it takes so that it always looks full and better */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.joke-container {
+    width: 500px;
+    height: 200px;
+    color: black;
+    background-color: aqua;
+}
+
