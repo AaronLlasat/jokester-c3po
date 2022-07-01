@@ -1,14 +1,21 @@
 const button = document.getElementById("button");
 const jokeContainer = document.getElementById("joke-container")
+let video = document.getElementById("video");
+let jokeText = document.getElementById("joke");
 
-function tellJoke() {
-    console.log("click")
-    fetch("http://localhost:8000/getjoke")
-    .then(response => response.json())
-    .then(joke => {
-        let h2Joke = `<h2>` + joke +`</h2>`
-        jokeContainer.insertAdjacentHTML("beforeend", h2Joke);
-    })
-    .catch(err => console.log(err))
+
+const assignJSON = (data) =>{
+   console.log("data:",data)
+   jokeText.innerHTML = data.joke;
+   video.src = data.audio;
 }
-button.addEventListener('click', tellJoke)
+const getJoke = () => {
+   console.log("click")
+   fetch("http://localhost:8000/getjoke")
+   .then(res => res.json())
+   .then(data => assignJSON(data))
+   .catch(err => console.log(err))
+}
+
+
+button.addEventListener('click', getJoke);
