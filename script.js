@@ -1,13 +1,14 @@
 const button = document.getElementById("button");
-const jokeContainer = document.getElementById("joke-container")
-let video = document.getElementById("video");
-let jokeText = document.getElementById("joke");
+let audio = document.getElementById("audio");
+let jokeText = document.getElementById("joke-text");
 
 
 const assignJSON = (data) =>{
    console.log("data:",data)
    jokeText.innerHTML = data.joke;
-   video.src = data.audio;
+   audio.src = data.audio;
+   typewriter();
+   
 }
 const getJoke = () => {
    console.log("click")
@@ -16,6 +17,8 @@ const getJoke = () => {
    .then(data => assignJSON(data))
    .catch(err => console.log(err))
 }
+
+// Typing effect
 
 
 button.addEventListener('click', getJoke);

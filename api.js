@@ -29,7 +29,7 @@ function generateGuid() {
 
 let postRequest = {
   "tts_model_token": modelToken,
-  "uuid_idempotency_token": generateGuid(),
+  "uuid_idempotency_token": "",
   "inference_text": ""
 };
 
@@ -37,6 +37,7 @@ let postRequest = {
 // Function to get the inference token from the FakeYou API
 async function getInferenceToken() {
   try {
+    postRequest.uuid_idempotency_token = generateGuid();
     const resp = await fetch("https://api.fakeyou.com/tts/inference", {
       method: 'POST',
       body: JSON.stringify(postRequest),
@@ -128,8 +129,6 @@ async function getJoke() {
   } catch (error) {
     console.log("err inference", error)
   }
-  
-  
 }
 
 // Function to set up the joke string depending on their type (one part or two part jokes)
@@ -157,12 +156,14 @@ app.get("/getjoke", (req, res) => {
     await getJoke()
     .then(async()=> {
     while (audioLink==="") {
-      console.log("Audio link is empty 👁 👁")
+      console.log("Audio link is empty 👁  👁")
       await new Promise(res => setTimeout(res, 1000));
     } 
     })
     .then(()=>res.send(JSON.stringify({"joke":postRequest.inference_text, "audio":audioLink})))
+    .then(audioLink = "")
     console.timeEnd("time")
+   
     }
     
     gatherJSONResponse();

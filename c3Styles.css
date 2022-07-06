@@ -1,0 +1,117 @@
+/* ROBOT.GIF from Giphy - https://giphy.com/gifs/robot-cinema-4d-eyedesyn-3o7abtn7DuREEpsyWY */
+
+html {
+  box-sizing: border-box;
+}
+
+
+
+body {
+  margin: 0;
+  background: rgba(193,45,108,255);
+  overflow: hidden;
+}
+
+
+.container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  flex-wrap: wrap;
+  background: url('C3PO-icon.png');
+  /* background-size: contain; */
+  /* First parameter (horizontal property) /// Second parameter (vertical property) */
+  background-position: 30% 40%;
+  background-repeat: no-repeat;
+}
+
+
+.controls-container button{
+  transform: translateY(150px);
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  color: white;
+  background: #ff3482;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+button:hover{
+  filter: brightness(95%);
+}
+
+/* 
+button:active{
+  transform: translateY(750%);
+  transform: scale(0.98);
+} */
+
+button:disabled{
+  cursor: default;
+  filter:brightness(30%);
+}
+
+/* Text-Box */
+.text-box {
+  width: 20%;
+  height: 20%;
+  text-align: justify;
+  background: rgb(0 0 0 / 50%);
+  border-radius: 10px;
+  padding: 30px;
+  display: inherit;
+  align-self: flex-end;
+  margin-right: 35em;
+}
+
+.text-box span {
+  color: white;
+  font-weight: lighter;
+  font-size: 1.5em;
+  font-family: monospace;
+}
+
+
+/* Media Query: Tablet or Smaller */
+@media screen and (max-width: 1000px) {
+   .container {
+    background-size: 100%;
+    background-position: top center;
+   }
+
+   .text-box {
+    display: flex;
+    width: 60%;
+    height: 20%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 300px;
+    margin-left: 50px;
+
+   }
+   .text-box span {
+    font-size: 1.07em;
+    
+   }
+
+   button {
+    box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.5);
+    width: 170px;
+    height: 50px;
+    margin-right: 515px;
+    transform: translateY(100%);
+    font-size: 1em;
+   }
+}
