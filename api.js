@@ -123,7 +123,7 @@ function pollRequest(token) {
 // Function to get a random joke from the Joke API
 async function getJoke() {
   try {
-    const resp = await fetch("https://v2.jokeapi.dev/joke/Dark?format=json")
+    const resp = await fetch("https://v2.jokeapi.dev/joke/Dark?format=json&type=twopart")
     const data = await resp.json()
     setUpJoke(data)
   } catch (error) {
@@ -133,14 +133,9 @@ async function getJoke() {
 
 // Function to set up the joke string depending on their type (one part or two part jokes)
 const setUpJoke = (res) => {
-  let joke = "";
-  res.type === "twopart"
-  ? joke = joke + res.setup + ".........." + res.delivery
-  : joke = joke + res.joke
-  console.log(res.type, ": ", joke)
-
+  console.log(res.type)
   // We send the joke as the inference text to the FakeYou API
-  postRequest.inference_text = joke;
+  postRequest.inference_text = res.setup + "..........*" + res.delivery;
 
   // We call the getInferenceToken function
   getInferenceToken()
