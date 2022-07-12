@@ -9,22 +9,19 @@ let jokeFirstPart;
 let jokeSecondPart;
 let timeOutDuration;
 
-const assignJSON = async(data) =>{
+const assignJSON = async (data) => {
    formatJoke(data);
 
-   if (!data.audio === "server_error" ) {
-      audio.src = data.audio;
-      jokeText.innerHTML = jokeFirstPart;
-      await new Promise(res => setTimeout(res, timeOutDuration));
-      jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
-      await new Promise(res => setTimeout(res, 1500));
-      isJokeFinished = true;
-      button.disabled = false;
-   } else {
-      picture.src = "yoda.png"
-      jokeText.innerText = "Server error, happened... fuck, hmmm..."
-   }
-   
+
+   audio.src = data.audio;
+   jokeText.innerHTML = jokeFirstPart;
+   await new Promise(res => setTimeout(res, timeOutDuration));
+   jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
+   await new Promise(res => setTimeout(res, 1500));
+   isJokeFinished = true;
+   button.disabled = false;
+
+
    console.log(jokeFirstPart.length)
    //112 = 4s
    //46 = 4s 
@@ -33,12 +30,12 @@ const assignJSON = async(data) =>{
 
 const formatJoke = (data) => {
    isJokeFound = true;
-   console.log("data:",data)
+   console.log("data:", data)
    jokeFirstPart = data.joke.split("*")[0];
    jokeSecondPart = data.joke.split("*")[1];
    if (jokeFirstPart.length < 80) {
       timeOutDuration = 3000;
-   } if(jokeFirstPart.length === 80){
+   } if (jokeFirstPart.length === 80) {
       timeOutDuration = 4000;
    } if (jokeFirstPart.length > 80) {
       timeOutDuration = 5000;
@@ -50,13 +47,13 @@ const formatJoke = (data) => {
 const getJoke = () => {
    console.log("click")
    stateOfLoader(true);
-   fetch("http://localhost:8000/getjoke", {method:"GET", headers: {"jokeCategory": jokeCategory.value}})
-   .then(res => res.json())
-   .then(data => assignJSON(data))
-   .catch(err => console.log(err))
+   fetch("http://localhost:8000/getjoke", { method: "GET", headers: { "jokeCategory": jokeCategory.value } })
+      .then(res => res.json())
+      .then(data => assignJSON(data))
+      .catch(err => console.log(err))
 }
 
-const stateOfLoader = async(loading) => {
+const stateOfLoader = async (loading) => {
    if (loading) {
       let i = 0;
       isJokeFound = false;
@@ -72,33 +69,33 @@ const stateOfLoader = async(loading) => {
             i = 0;
          }
       }
-      
+
    }
 }
 
-const changeDisplayText = () =>{
+const changeDisplayText = () => {
    if (isJokeFinished) {
       switch (jokeCategory.value) {
-      case "Programming":
-         jokeText.textContent = "Hi, my name is C-3PO and I'm a nerdy jokester."
-         break;     
-      case "Dark":
-         jokeText.textContent = "Hi, my name is C-3PO and I'm fueled by racism, misogyny and hatred."
-         break;
-      case "Pun":
-         jokeText.textContent = "Hi, my name is C-3PO and dad jokes and puns are my thing."
-         break;
-      case "Spooky":
-         jokeText.textContent = "Hi, my name is C-3PO and I'm gonna scare you to death with these jokes."
-         break;
-      case "Christmas":
-         jokeText.textContent = "Hi, my name is C-3PO and I'm all in for Christmas and jokes."
-         break;
-      case "Misc":
-         jokeText.textContent = "Hi, my name is C-3PO and I have a wide variety of random jokes for you."
-         break;
-      default:
-         break;
+         case "Programming":
+            jokeText.textContent = "Hi, my name is C-3PO and I'm a nerdy jokester."
+            break;
+         case "Dark":
+            jokeText.textContent = "Hi, my name is C-3PO and I'm fueled by racism, misogyny and hatred."
+            break;
+         case "Pun":
+            jokeText.textContent = "Hi, my name is C-3PO and dad jokes and puns are my thing."
+            break;
+         case "Spooky":
+            jokeText.textContent = "Hi, my name is C-3PO and I'm gonna scare you to death with these jokes."
+            break;
+         case "Christmas":
+            jokeText.textContent = "Hi, my name is C-3PO and I'm all in for Christmas and jokes."
+            break;
+         case "Misc":
+            jokeText.textContent = "Hi, my name is C-3PO and I have a wide variety of random jokes for you."
+            break;
+         default:
+            break;
       }
    }
 }

@@ -96,7 +96,7 @@ function pollRequest(token) {
   if (!json.success) {
     reject(`Failed poling! ${json.error_reason}`)
     console.error("jason",json);
-    return "server_error"
+    return 
   }
 
   switch (json.state.status) {
@@ -144,11 +144,6 @@ const setUpJoke = (res) => {
   // We call the getInferenceToken function
   getInferenceToken()
   .then(res => pollRequest(res.inference_job_token))
-  .then(res => {
-    if (res === "server_error") {
-      audioLink = "server_error"
-    }
-  })
   .catch(err => console.log(err))
 }
 
