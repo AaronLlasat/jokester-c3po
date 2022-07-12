@@ -1,4 +1,0 @@
-Coses a canviar:
-
-1) La foto NO pot ser el background, ha de ser un element (<img>) més, sino complica molt lo flexbox.
-Para aixo canviar a css grid maybe?

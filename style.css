@@ -1,28 +1,60 @@
-/* ROBOT.GIF from Giphy - https://giphy.com/gifs/robot-cinema-4d-eyedesyn-3o7abtn7DuREEpsyWY */
+/* C-3PO Art from Behance - https://www.behance.net/gallery/17998561/Star-Wars-Long-Shadow-Flat-Design-Icons */
+
+nav {
+  width: 100vw;
+  display: flex; 
+  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+nav select {
+  width: 280px;
+  height: 45px;
+  margin-top: 2em;
+  margin-right: 4em;
+  border-radius: 100px;
+  font-family: monospace;
+  font-size: 1.3em;
+  color: #fff;
+  background: rgb(0 0 0 / 50%);
+  border: none;
+  outline: none;
+  text-indent: 5%;
+  cursor: pointer;
+  
+}
 
 
 html {
+  height: 100vh;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 
 
 body {
+  height: 100vh;
+  min-height: 100%;
   margin: 0;
   background: rgba(193,45,108,255);
-  overflow: hidden;
+  
 }
 
 
 .container {
-  height: 80vh;
+  
   width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 2%;
   flex-wrap: wrap;
 
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 
@@ -32,18 +64,13 @@ body {
   align-items: center;
 }
 
-.controls-container button {
-  margin-bottom: 100%;
-}
-
-
 button {
   cursor: pointer;
   outline: none;
   width: 200px;
   height: 50px;
   font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
+  font-size: 18px;
   color: white;
   background: #ff3482;
   border: none;
@@ -64,7 +91,7 @@ button:active{
 
 button:disabled{
   cursor: default;
-  filter:brightness(30%);
+  filter:brightness(50%);
 }
 
 /* Text-Box */
@@ -76,18 +103,58 @@ button:disabled{
   border-radius: 10px;
   padding: 30px;
   margin-top: 1%;
-
-  
 }
 
 .text-box span {
   color: white;
   font-weight: lighter;
-  font-size: 1.5em;
-  font-family: monospace;
+  font-size: 1.3em;
+  font-family: monospace, sans-serif;
+}
+
+/* Footer */
+footer {
+  z-index: 10;
+  height: 80px;
+  width: 100vw;
+  margin-top: 2em;
+  background: rgb(26, 26, 26);
+  
+}
+
+.social-media-container{
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.social-media-container i {
+  border-left: 5px solid transparent;
+  border-right: 10px solid transparent;
+  cursor: pointer;
+  font-size: 2em;
+  color: #fff;
+}
+
+.social-media-container i:hover{
+  color: rgba(193,45,108,255);
 }
 
 
+/* Scrollbar */
+::-webkit-scrollbar
+{
+	width: 12px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
 /* Media Query: Tablet or Smaller */
 
 
@@ -110,7 +177,7 @@ button:disabled{
   }
 
   .controls-container button {
-    box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.3);
     width: 185px;
     height: 45px;
     font-size: 1.2em;
@@ -132,9 +199,20 @@ button:disabled{
   }
 
   .controls-container button {
-    width: 170px;
-    height: 45px;
-    margin-top: -0.5em;
+    width: 200px;
+    height: 55px;
+    margin-top: -3.5em;
   }
   
+  nav {
+    justify-content: center;
+  }
+
+  nav select{
+    width: 200px;
+    height: 35px;
+    margin-top: 1.5em;
+    margin-right: 0;
+    font-size: 1.2em;
+  }
 }

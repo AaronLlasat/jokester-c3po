@@ -87,6 +87,7 @@ function pollRequest(token) {
   })
  
   const json = await response.json().catch(error => {
+    console.log(json);
     reject("Failed to parse poll JSON")
   });
 
@@ -94,7 +95,7 @@ function pollRequest(token) {
 
   if (!json.success) {
     reject(`Failed poling! ${json.error_reason}`)
-    console.error(json);
+    console.error("jason",json);
     return
   }
 
@@ -121,9 +122,12 @@ function pollRequest(token) {
 })}
 
 // Function to get a random joke from the Joke API
-async function getJoke() {
+async function getJoke(jokeCategory) {
+  if (jokeCategory === "Joke Category") {
+    jokeCategory = "Any";
+  }
   try {
-    const resp = await fetch("https://v2.jokeapi.dev/joke/Dark?format=json&type=twopart")
+    const resp = await fetch(`https://v2.jokeapi.dev/joke/${jokeCategory}?format=json&type=twopart`)
     const data = await resp.json()
     setUpJoke(data)
   } catch (error) {
@@ -146,9 +150,10 @@ const setUpJoke = (res) => {
 
 // Express route to get the joke and the audio link from the FrontEnd
 app.get("/getjoke", (req, res) => {
+  console.log(req.headers.jokecategory)
   console.time("time")
   async function gatherJSONResponse() { 
-    await getJoke()
+    await getJoke(req.headers.jokecategory)
     .then(async()=> {
     while (audioLink==="") {
       console.log("Audio link is empty 👁  👁")

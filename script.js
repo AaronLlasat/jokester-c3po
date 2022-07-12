@@ -1,7 +1,9 @@
 const button = document.getElementById("button");
 let audio = document.getElementById("audio");
 let jokeText = document.getElementById("joke-text");
-let foundJoke = false;
+let jokeCategory = document.getElementById("joke-category");
+let isJokeFound = false;
+let isJokeFinished = true;
 let jokeFirstPart;
 let jokeSecondPart;
 let timeOutDuration;
@@ -15,10 +17,13 @@ const assignJSON = async(data) =>{
    //46 = 4s 
    await new Promise(res => setTimeout(res, timeOutDuration));
    jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
+   await new Promise(res => setTimeout(res, 1500));
+   isJokeFinished = true;
+   button.disabled = false;
 }
 
 const formatJoke = (data) => {
-   foundJoke = true;
+   isJokeFound = true;
    console.log("data:",data)
    jokeFirstPart = data.joke.split("*")[0];
    jokeSecondPart = data.joke.split("*")[1];
@@ -36,7 +41,7 @@ const formatJoke = (data) => {
 const getJoke = () => {
    console.log("click")
    stateOfLoader(true);
-   fetch("http://localhost:8000/getjoke")
+   fetch("http://localhost:8000/getjoke", {method:"GET", headers: {"jokeCategory": jokeCategory.value}})
    .then(res => res.json())
    .then(data => assignJSON(data))
    .catch(err => console.log(err))
@@ -45,13 +50,15 @@ const getJoke = () => {
 const stateOfLoader = async(loading) => {
    if (loading) {
       let i = 0;
-      foundJoke = false;
+      isJokeFound = false;
+      isJokeFinished = false;
+      button.disabled = true;
       jokeText.innerHTML = "Loading";
-      while (i < 4 && !foundJoke) {
+      while (i < 4 && !isJokeFound) {
          await new Promise(res => setTimeout(res, 1000));
          jokeText.innerHTML = jokeText.innerHTML + "."
          i++;
-         if (i === 4 && !foundJoke) {
+         if (i === 4 && !isJokeFound) {
             jokeText.innerHTML = "Loading"
             i = 0;
          }
@@ -60,5 +67,32 @@ const stateOfLoader = async(loading) => {
    }
 }
 
+const changeDisplayText = () =>{
+   if (isJokeFinished) {
+      switch (jokeCategory.value) {
+      case "Programming":
+         jokeText.textContent = "Hi, my name is C-3PO and I'm a nerdy jokester."
+         break;     
+      case "Dark":
+         jokeText.textContent = "Hi, my name is C-3PO and I'm fueled by racism, misogyny and hatred."
+         break;
+      case "Pun":
+         jokeText.textContent = "Hi, my name is C-3PO and dad jokes and puns are my thing."
+         break;
+      case "Spooky":
+         jokeText.textContent = "Hi, my name is C-3PO and I'm gonna scare you to death with these jokes."
+         break;
+      case "Christmas":
+         jokeText.textContent = "Hi, my name is C-3PO and I'm all in for Christmas and jokes."
+         break;
+      case "Misc":
+         jokeText.textContent = "Hi, my name is C-3PO and I have a wide variety of random jokes for you."
+         break;
+      default:
+         break;
+      }
+   }
+}
 
+jokeCategory.addEventListener('change', changeDisplayText)
 button.addEventListener('click', getJoke);
