@@ -2,6 +2,7 @@ const button = document.getElementById("button");
 let audio = document.getElementById("audio");
 let jokeText = document.getElementById("joke-text");
 let jokeCategory = document.getElementById("joke-category");
+let picture = document.getElementById("picture");
 let isJokeFound = false;
 let isJokeFinished = true;
 let jokeFirstPart;
@@ -10,16 +11,24 @@ let timeOutDuration;
 
 const assignJSON = async(data) =>{
    formatJoke(data);
-   audio.src = data.audio;
-   jokeText.innerHTML = jokeFirstPart;
+
+   if (!data.audio === "server_error" ) {
+      audio.src = data.audio;
+      jokeText.innerHTML = jokeFirstPart;
+      await new Promise(res => setTimeout(res, timeOutDuration));
+      jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
+      await new Promise(res => setTimeout(res, 1500));
+      isJokeFinished = true;
+      button.disabled = false;
+   } else {
+      picture.src = "yoda.png"
+      jokeText.innerText = "Server error, happened... fuck, hmmm..."
+   }
+   
    console.log(jokeFirstPart.length)
    //112 = 4s
    //46 = 4s 
-   await new Promise(res => setTimeout(res, timeOutDuration));
-   jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
-   await new Promise(res => setTimeout(res, 1500));
-   isJokeFinished = true;
-   button.disabled = false;
+
 }
 
 const formatJoke = (data) => {
