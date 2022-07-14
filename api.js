@@ -27,6 +27,7 @@ function generateGuid() {
   return result;
 }
 
+// Header for the request when getting the inference token
 let postRequest = {
   "tts_model_token": modelToken,
   "uuid_idempotency_token": "",
@@ -34,7 +35,7 @@ let postRequest = {
 };
 
 
-// Function to get the inference token from the FakeYou API
+// Get the inference token from the FakeYou API
 async function getInferenceToken() {
   try {
     postRequest.uuid_idempotency_token = generateGuid();
@@ -52,7 +53,7 @@ async function getInferenceToken() {
   
 }
 
-// Function to fetch every 3s during the poll request for the FakeYou API
+// Fetch every 3s during the poll request for the FakeYou API
 async function fetchPatiently(url, params) {
   let response = await fetch(url, params);
 
@@ -65,7 +66,7 @@ async function fetchPatiently(url, params) {
   return response;
 }
 
-// Function to poll request for the FakeYou API
+// Poll request for the FakeYou API
 function pollRequest(token) {
   console.log("Polling...")
   return new Promise(async(resolve, reject) => {
@@ -86,6 +87,7 @@ function pollRequest(token) {
           console.error(error);
   })
  
+  // Parse JSON to JS object and checks for any error
   const json = await response.json().catch(error => {
     console.log(json);
     reject("Failed to parse poll JSON")
@@ -99,6 +101,7 @@ function pollRequest(token) {
     return 
   }
 
+  // Checks for the status of the JSON parse and, if successful, assigns the audio link with the correct info
   switch (json.state.status) {
     case "pending":{
       console.log("STATUS: Pending...")
@@ -121,7 +124,7 @@ function pollRequest(token) {
   }
 })}
 
-// Function to get a random joke from the Joke API
+// API call to get a random joke from the JokeAPI
 async function getJoke(jokeCategory) {
   if (jokeCategory === "Joke Category") {
     jokeCategory = "Any";
@@ -135,7 +138,7 @@ async function getJoke(jokeCategory) {
   }
 }
 
-// Function to set up the joke string depending on their type (one part or two part jokes)
+// Set up the joke string for the get inference token call
 const setUpJoke = (res) => {
   console.log(res.type)
   // We send the joke as the inference text to the FakeYou API

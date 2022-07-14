@@ -1,0 +1,293 @@
+/* C-3PO Art from Behance - https://www.behance.net/gallery/17998561/Star-Wars-Long-Shadow-Flat-Design-Icons */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+/* HTML & Body */
+html {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  width: 100vw;
+}
+
+
+body {
+  margin: 0;
+  background: rgba(193,45,108,255);
+}
+
+
+/* Navigation bar */
+nav {
+  width: 100vw;
+  display: flex; 
+  justify-content: space-between;
+  justify-content: flex-end;
+}
+
+nav select {
+  /* Positioning and sizing */
+  width: 280px;
+  height: 45px;
+  margin-top: 2em;
+  margin-right: 4em;
+  border-radius: 100px;
+  /* Font styling */
+  font-family: monospace;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #000;
+  /* Other styling */
+  border: none;
+  outline: none;
+  text-indent: 5%;
+  cursor: pointer;
+  background-image: url(./assets/arrow.svg);
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-position-x: 93%;
+  background-size: 10px;
+  background-color: rgb(255 255 255 / 50%);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;  
+}
+
+
+nav select::-ms-expand {
+  display: none; /*Evita que se muestre la flecha por defecto en versiones de IE*/
+}
+
+
+/* Parent container */
+.super-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* Joke and image container */
+.joke-container {
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+/* Controls container */
+.controls-container {
+  height: 50px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Button positioning and sizing */
+button {
+  cursor: pointer;
+  outline: none;
+  width: 200px;
+  height: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  color: white;
+  background: #ff3482;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 20px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Button effects */
+button:hover{
+  filter: brightness(95%);
+}
+
+
+button:active{
+  transform: translateY(750%);
+  transform: scale(0.98);
+}
+
+button:disabled{
+  cursor: default;
+  filter:brightness(50%);
+}
+
+
+/* Text-Box */
+.text-box {
+  width: 20em;
+  height: auto;
+  text-align: justify;
+  background: rgb(0 0 0 / 50%);
+  border-radius: 10px;
+  padding: 30px;
+  margin-top: 1%;
+}
+
+.text-box span {
+  color: white;
+  font-weight: lighter;
+  font-size: 1.3em;
+  font-family: monospace, sans-serif;
+}
+
+
+/* Footer */
+footer {
+  bottom: 0;
+  height: 60px;
+  width: 100vw;
+  margin-top: 2em;
+  background: rgb(26, 26, 26);
+  background: #333;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.footer-container{
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright-container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.links-container{
+  height: 60px;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 40px;
+  gap: 30px;
+}
+
+.footer-container i {
+  /* border-left: 5px solid transparent;
+  border-right: 50px solid transparent; */
+  cursor: pointer;
+  font-size: 1.9em;
+  color: #fff;
+  margin-top: 5px;
+}
+
+
+.footer-container span {
+  margin-top: 5px;
+  color: gray;
+}
+
+.footer-container i:hover{
+  color: rgba(193,45,108,255);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar
+{
+	width: 12px;
+}
+
+::-webkit-scrollbar-thumb
+{
+  box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+/* Media Query: Tablet or Smaller: maxwidth 891 */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .joke-container {
+    height: 75vh;
+  }
+
+  img {
+    width: 416px;
+    height: auto;
+  }
+
+  .text-box {
+    width: 15em;
+  }
+
+  .text-box span {
+    font-size: 1.2em;
+  }
+
+  .controls-container button {
+    box-shadow: 5px 5px 30px 20px rgba(0, 0, 0, 0.3);
+    width: 185px;
+    height: 45px;
+    font-size: 1.1em;
+    /* margin-top: -230px; */
+  }
+  
+}
+
+
+@media screen and (max-width: 767px) {
+  .joke-container{
+    height: 75vh;
+    margin-bottom: 2em;
+  }
+
+  
+  img {
+    width: 400px;
+    height: auto;
+  }
+
+  .text-box {
+    margin-bottom: 4em;
+  }
+
+  .text-box span {
+    font-size: 1.1em;
+  }
+
+  .controls-container button {
+    margin-top: 0em;
+  }
+  
+  nav {
+    justify-content: center;
+  }
+
+  nav select{
+    width: 200px;
+    height: 35px;
+    margin-top: 1.5em;
+    margin-right: 0;
+    font-size: 1.2em;
+    background-size: 8px;
+  }
+
+  footer {
+    position: relative;
+    
+  }
+
+  .footer-container span {
+    font-size: smaller;
+  }
+
+}
+
+/* @media screen and (max-height: 755px)  {
+  .controls-container button {
+    margin-bottom: -4em;
+  }
+  
+}   */
