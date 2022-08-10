@@ -14,7 +14,9 @@ The frontend is built with plain HTML, CSS and JavaScript, while the backend is 
 ## 🤷 It isn't perfect
 It's been merely two months since I've started programming with JavaScript and its libraries and frameworks. I'm still a youngling, so you may encounter some errors.<br>
 
-Also, I don't currently own an API key for the FakeYou API, so you might have to wait to 20s for the TTS to popup. It may also crash if you ask for several jokes on a row. Master Yoda will make sure you know when you must stop and wait for a minute or two until the rate limit timeout ends.
+Also, I don't currently own an API key for the FakeYou API, so you might have to wait to 20s for the TTS to popup. It may also crash if you ask for several jokes on a row. Master Yoda will make sure you know when you must stop and wait for a minute or two until the rate limit timeout ends.<br>
+
+Finally, I don't own the voice model. Sometimes it cracks and doesn't end reading the joke, but I can't do anything about it. Please be patient, after all, C-3PO is just an amateur jokester.
 
 ---
 
