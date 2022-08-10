@@ -19,4 +19,4 @@ Also, I don't currently own an API key for the FakeYou API, so you might have to
 ---
 
 ## ⚠️ Warning
-If you don't choose a specific joke category, you will get a random joke of any kind. If you're susceptible to dark/black/offensive humor, *please* make sure to select any other category than **Dark** or you might get an offensive joke randomly displayed.
+If you don't choose a specific joke category, you will get a random joke of any kind. If you're susceptible to dark/black/offensive humor, *please* make sure you select any other category than **Dark** or you might get an offensive joke randomly displayed.
