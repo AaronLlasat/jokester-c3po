@@ -18,9 +18,9 @@ const assignJSON = async (data) => {
    formatJoke(data);
    if (data.audio === "rate_limited") {
       jokeText.innerHTML = "Rate limited by the server, I have been... mhhmm... try again in a minute, you must... mhmmhm...";
-      picture.src = "/assets/yoda.png"
+      picture.src = "assets/yoda.png"
    } else {
-      picture.src = "/assets/C3PO-icon.png"
+      picture.src = "assets/C3PO-icon.png"
       audio.src = data.audio; 
       jokeText.innerHTML = jokeFirstPart;
       await new Promise(res => setTimeout(res, timeOutDuration));
