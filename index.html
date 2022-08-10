@@ -1,17 +1,17 @@
-<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jokester C-3PO</title>
-    <link rel="icon" type="image/png" href="./assets/C3PO-icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+    <link rel="shortcut icon" type="image/png" href="assets/C3PO-icon.png" /> 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
     <link rel="stylesheet" type="text/css" href="style.css" />
-</head>
-<body>
- <!-- Parent container -->
-  <div class="super-container">
-     <!-- Navigation bar -->
+  </head>
+  <body>
+    <!-- Navigation bar -->
     <nav>
       <select name="select" id="joke-category">
         <option hidden selected>Joke Category</option>
@@ -23,19 +23,22 @@
         <option value="Misc">Misc</option>
       </select>
     </nav>
-    <!-- Container for C-3PO picture and the joke text box -->
-    <div class="joke-container">
-      <img src="./assets/C3PO-icon.png" id="picture" alt="">
-      <div class="text-box" id="text-box">
-        <span id="joke-text">Hi, my name is C-3PO and I'm an amateur jokester.</span>
+    <!-- Parent container -->
+    <div class="super-container">
+      <!-- Container for C-3PO picture and the joke text box -->
+      <div class="joke-container">
+        <img src="/assets/C3PO-icon.png" id="picture" alt="" />
+        <div class="text-box" id="text-box">
+          <span id="joke-text">Hi, my name is C-3PO and I'm an amateur jokester.</span
+          >
+        </div>
       </div>
-    </div> 
-    <!-- Container for the controls -->
-    <div class="controls-container">
-      <button id="button">Tell Me A Joke!</button>
-      <audio src="" id="audio" controls hidden autoplay></audio>
+      <!-- Container for the controls -->
+      <div class="controls-container">
+        <button id="button">Tell Me A Joke!</button>
+        <audio src="" id="audio" controls hidden autoplay></audio>
+      </div>
     </div>
-  </div>
     <!-- Footer with social media links and copyrght -->
     <footer>
       <div class="footer-container">
@@ -43,14 +46,21 @@
           <span>© 2022 - Website developed by Aaron Llasat</span>
         </div>
         <div class="links-container">
-          <a href="https://github.com/AaronLlasat" target="_blank"><i class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/aaron-llasat-9133301b7/" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href = "mailto: aaronllasat19@gmail.com" target="_blank"><i class="fa fa-envelope"></i></a>
+          <a href="https://github.com/AaronLlasat" target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/aaron-llasat-9133301b7/"
+            target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a href="mailto: aaronllasat19@gmail.com" target="_blank"
+            ><i class="fa fa-envelope"></i
+          ></a>
         </div>
-
       </div>
     </footer>
     <!-- Script -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

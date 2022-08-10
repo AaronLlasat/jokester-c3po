@@ -14,12 +14,21 @@ let timeOutDuration;
 
 // Assign the information received through JSON to the respective DOM elements
 const assignJSON = async (data) => {
+
    formatJoke(data);
-   audio.src = data.audio;
-   jokeText.innerHTML = jokeFirstPart;
-   await new Promise(res => setTimeout(res, timeOutDuration));
-   jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
-   await new Promise(res => setTimeout(res, 1500));
+   if (data.audio === "rate_limited") {
+      jokeText.innerHTML = "Rate limited by the server, I have been... mhhmm... try again in a minute, you must... mhmmhm...";
+      picture.src = "/assets/yoda.png"
+   } else {
+      picture.src = "/assets/C3PO-icon.png"
+      audio.src = data.audio; 
+      jokeText.innerHTML = jokeFirstPart;
+      await new Promise(res => setTimeout(res, timeOutDuration));
+      jokeText.innerHTML = jokeText.innerHTML + "<br><br>" + jokeSecondPart;
+      await new Promise(res => setTimeout(res, 1500));
+   }
+
+
    isJokeFinished = true;
    button.disabled = false;
 
@@ -47,14 +56,17 @@ const formatJoke = (data) => {
 // API call to get a JSON with the joke and the link where the voice model reads the joke
 const getJoke = () => {
    stateOfLoader(true);
-   fetch("https://c3po-api.herokuapp.com/getjoke", 
-   {method: "GET", 
-   headers: {
-   "jokeCategory": jokeCategory.value},
-   "Access-Control-Allow-Origin":"https://c3po-api.herokuapp.com/getjoke",
-   "Access-Control-Allow-Methods" : "OPTIONS, POST, GET",
-   "Access-Control-Allow-Headers" : "Content-Type",
-   "Access-Control-Allow-Credentials" : true})
+   fetch("https://c3po-api.herokuapp.com/getjoke",
+      {
+         method: "GET",
+         headers: {
+            "jokeCategory": jokeCategory.value
+         },
+         "Access-Control-Allow-Origin": "https://c3po-api.herokuapp.com/getjoke",
+         "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
+         "Access-Control-Allow-Headers": "Content-Type",
+         "Access-Control-Allow-Credentials": true
+      })
       .then(res => res.json())
       .then(data => assignJSON(data))
       .catch(err => console.log(err))
