@@ -1,5 +1,5 @@
 # 🤖 Jokester C-3PO
-This is a personal project I've developed on my own and entirely for fun. It consists on a C-3PO TTS voice model that reads a random joke of the category joke you choose.<br>
+This is a personal project I've developed on my own and entirely for fun. It consists on a C-3PO TTS voice model that reads a random joke of the category you choose.<br>
 
 The frontend is built with plain HTML, CSS and JavaScript, while the backend is structured with Node and Express. You can find the code for the backend [here](https://github.com/AaronLlasat/c3po-api "C-3PO API").
 
