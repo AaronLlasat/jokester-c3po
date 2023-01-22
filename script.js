@@ -56,13 +56,13 @@ const formatJoke = (data) => {
 // API call to get a JSON with the joke and the link where the voice model reads the joke
 const getJoke = () => {
    stateOfLoader(true);
-   fetch("https://c3po-api.herokuapp.com/getjoke",
+   fetch("https://c3po-api.onrender.com/getjoke",
       {
          method: "GET",
          headers: {
             "jokeCategory": jokeCategory.value
          },
-         "Access-Control-Allow-Origin": "https://c3po-api.herokuapp.com/getjoke",
+         "Access-Control-Allow-Origin": "https://c3po-api.onrender.com/getjoke",
          "Access-Control-Allow-Methods": "OPTIONS, POST, GET",
          "Access-Control-Allow-Headers": "Content-Type",
          "Access-Control-Allow-Credentials": true
